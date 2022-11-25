@@ -1,0 +1,16 @@
+name = "links"
+main = "src/index.ts"
+compatibility_date = "2022-11-25"
+
+workers_dev = true
+routes = [
+	{ pattern = "l.jacoblin.cool", custom_domain = true, zone_name = "jacoblin.cool" }
+]
+
+[[kv_namespaces]]
+binding = "STORAGE"
+id = "044a5b30bf974d06910ec45a3f30a87e"
+preview_id = "bff97430971d48b3902e470aa1d01809"
+
+[vars]
+# PASS = "LINKS_OWNER_PASSWORD" You should set this in the dashboard
