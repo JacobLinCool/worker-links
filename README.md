@@ -16,6 +16,16 @@ Short link service powered by [Cloudflare Workers](https://workers.cloudflare.co
 
 ![list-links](screenshots/list-links.gif)
 
+### Notify when a link is accessed
+
+If you want to be notified when a link is accessed, you can set `EMAIL_NOTIFY` environment variable to your email address.
+
+You will receive an email with visitor's IP address, user agent, and Cloudflare request context.
+
+Like this:
+
+![email-notify](screenshots/email-notify.png)
+
 ## Deploy
 
 It is a Cloudflare Worker!

@@ -4,6 +4,7 @@ import Home from "./pages/home";
 import List from "./pages/list";
 import Access from "./pages/access";
 import api from "./api";
+import { send } from "./notify/email";
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -31,6 +32,36 @@ app.get("/:slug", async (c) => {
             c.status(401);
             return c.html(`<h1>Unauthorized</h1>`);
         }
+    }
+
+    if (c.env.EMAIL_NOTIFY) {
+        const host = c.req.headers.get("host");
+        const url = `https://${host}/${slug}`;
+
+        const ip = c.req.headers.get("cf-connecting-ip") || c.req.headers.get("x-forwarded-for") || c.req.headers.get("x-real-ip");
+        const country = c.req.headers.get("cf-ipcountry");
+        const ua = c.req.headers.get("user-agent");
+
+        c.executionCtx.waitUntil(
+            send(
+                c.env.EMAIL_NOTIFY,
+                `Link Accessed: ${url}`,
+                `
+            Link <b><i>${url}</i></b> was accessed at <code>${new Date()}</code>. <br />
+            <br />
+            <fieldset>
+                <p>Visitor Info:</p>
+                <ul>
+                    <li>IP Address: <code>${ip}</code> (${country})</li>
+                    <li>User Agent: <code>${ua}</code></li>
+                </ul>
+
+                <p>Cloudflare Context:</p>
+                <pre><code>${JSON.stringify(c.req.cf, null, 4)}</code></pre>
+            </fieldset>
+            `
+            )
+        );
     }
 
     return c.redirect(link.url);
