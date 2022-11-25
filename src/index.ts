@@ -1,8 +1,8 @@
 import { Hono } from "hono";
 import { Env } from "./types";
-import Home from "./home";
-import List from "./list";
-import Access from "./access";
+import Home from "./pages/home";
+import List from "./pages/list";
+import Access from "./pages/access";
 import api from "./api";
 
 const app = new Hono<{ Bindings: Env }>();
