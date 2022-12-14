@@ -15,3 +15,4 @@ preview_id = "bff97430971d48b3902e470aa1d01809"
 [vars]
 # PASS = "LINKS_OWNER_PASSWORD" You should set this in the dashboard
 # EMAIL_NOTIFY = "THE_EMAIL_TO_NOTIFY" Optional, if set, will send an email to this address when a link is accessed by someone
+# DISCORD_NOTIFY = "DISCORD_WEBHOOK_URL" Optional, if set, will send a message to this webhook when a link is accessed by someone
