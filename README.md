@@ -26,6 +26,8 @@ Like this:
 
 ![email-notify](screenshots/email-notify.png)
 
+And you can also set `DISCORD_NOTIFY` environment variable to your Discord webhook URL if you want to receive a notification in Discord.
+
 ## Deploy
 
 It is a Cloudflare Worker!
