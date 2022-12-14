@@ -4,7 +4,8 @@ compatibility_date = "2022-11-25"
 
 workers_dev = true
 routes = [
-	{ pattern = "l.jacoblin.cool", custom_domain = true, zone_name = "jacoblin.cool" }
+	{ pattern = "l.jacoblin.cool", custom_domain = true, zone_name = "jacoblin.cool" },
+	{ pattern = "l.csie.cool", custom_domain = true, zone_name = "csie.cool" }
 ]
 
 [[kv_namespaces]]
